@@ -11,13 +11,13 @@ const listRef = listWithId.querySelectorAll('.item');
 
 const title = listRef.forEach(element => {
 
-        const titleEl = element.firstElementChild;
-        const titleText = titleEl.textContent;
+        const titleFirstEl = element.firstElementChild;
+        const titleText = titleFirstEl.textContent;
 
-    const titleUl = titleEl.nextElementSibling;
-    const titleLi = titleUl.children.length;
+    const titleLastEl = element.lastElementChild;
+    const titleLastElLeng = titleLastEl.children.length;
 
     console.log(`Category: ${titleText}`);
-    console.log(`Elements: ${titleLi}`);
+    console.log(`Elements: ${titleLastElLeng}`);
 });
   
