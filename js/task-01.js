@@ -9,10 +9,10 @@ console.log(listItemsSum);
 
 const listRef = listWithId.querySelectorAll('.item');
 
-const title = listRef.forEach(element => {
+const titleFn = listRef.forEach(element => {
 
-        const titleFirstEl = element.firstElementChild;
-        const titleText = titleFirstEl.textContent;
+    const titleFirstEl = element.firstElementChild;
+    const titleText = titleFirstEl.textContent;
 
     const titleLastEl = element.lastElementChild;
     const titleLastElLeng = titleLastEl.children.length;
