@@ -12,3 +12,10 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+const listRef = document.querySelector('.gallery');
+
+const nevElements = images.map(({url, alt}) => 
+`<li class = 'gallery__item'> <img class = 'gallery__img' src = '${url}' alt = '${alt}' /> </li>`).join('');
+
+const addElements = listRef.insertAdjacentHTML('afterbegin', nevElements);
