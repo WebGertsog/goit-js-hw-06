@@ -1,22 +1,3 @@
-// Напиши скрипт создания и очистки коллекции элементов. Пользователь вводит количество элементов в input и нажимает кнопку Создать, после чего рендерится коллекция. При нажатии на кнопку Очистить, коллекция элементов очищается.
-
-// <div id="controls">
-//   <input type="number" min="1" max="100" step="1" />
-//   <button type="button" data-create>Create</button>
-//   <button type="button" data-destroy>Destroy</button>
-// </div>
-
-// <div id="boxes"></div>
-// Создай функцию createBoxes(amount), которая принимает один параметр - число. Функция создает столько <div>, сколько указано в amount и добавляет их в div#boxes.
-
-// Размеры самого первого <div> - 30px на 30px.
-// Каждый элемент после первого, должен быть шире и выше предыдущего на 10px.
-// Все элементы должены иметь случайный цвет фона в формате HEX. Используй готовую функцию getRandomHexColor для получения цвета.
-// function getRandomHexColor() {
-//   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-// }
-// Создай функцию destroyBoxes(), которая очищает содержимое div#boxes, тем самым удаляя все созданные элементы.
-
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
@@ -24,9 +5,30 @@ function getRandomHexColor() {
 const controlsRef = document.querySelector('[type="number"]');
 const createEl = document.querySelector('button[data-create]');
 const destroyEl = document.querySelector('button[data-destroy]');
+const boxesRef = document.querySelector("#boxes");
+let sizeBox = 30;
 
-let amount = controlsRef.value;
-console.dir(amount);
-// function createBoxes(amount) {
+function createBoxes(amount) {
+  const arrEl =[];
+  for (let i = 0; i < amount; i += 1) {
+    const box = document.createElement("div");
+    box.style.width = `${sizeBox}px`;
+    box.style.height = `${sizeBox}px`;
+    box.style.borderStyle = 'outset';
+    box.style.marginLeft = 'auto';
+    box.style.marginRight = 'auto';
+    box.style.background = getRandomHexColor();
+    arrEl.push(box);
+    sizeBox += 10;
+  }
+  boxesRef.append(...arrEl);
+};
 
-// }
+createEl.addEventListener("click", (event) => {
+    createBoxes(controlsRef.value);
+  });
+
+destroyEl.addEventListener("click", () => {
+      sizeBox = 30;
+      boxesRef.innerHTML = "";
+    });
